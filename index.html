@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Be My Bestest friend ever?</title>
+    <title>Be My Best Friend Forever?</title>
     <style>
+        /* Colorful animated background */
+        @keyframes bgAnimation {
+            0% { background: #ff9a9e; }
+            25% { background: #fad0c4; }
+            50% { background: #ffdde1; }
+            75% { background: #fcb69f; }
+            100% { background: #ff9a9e; }
+        }
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: pink;
             overflow: hidden;
+            animation: bgAnimation 8s infinite linear alternate;
         }
         h1 {
             color: red;
-        }
+            font-size: 36px;
+            font-weight: bold;
+       }
         img {
             width: 250px; 
             height: auto;
@@ -26,11 +36,23 @@
         }
         button {
             font-size: 20px;
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
+            border: none;
+            border-radius: 10px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        #yes-btn {
+            background-color: #28a745;
+            color: white;
         }
         #no-btn {
             position: absolute;
+            background-color: #dc3545;
+            color: white;
+            transition: transform 0.1s;
         }
         #popup-container {
             position: fixed;
@@ -86,6 +108,10 @@
             button.style.top = y + "px";
         }
 
+        function startFloatingNoButton() {
+            setInterval(moveNoButton, 500); // Moves every 0.5 seconds
+        }
+
         function showPopup() {
             document.getElementById("popup-container").style.display = "flex";
             document.getElementById("subscription-text").style.display = "block";
@@ -93,7 +119,7 @@
         }
 
         function startFallingEffects() {
-            let symbols = ["❤️", "🌹", "💖", "🌸", "💘"];
+            let symbols = ["❤", "🌹", "💖", "🌸", "💘"];
             for (let i = 0; i < 30; i++) {
                 let fallElement = document.createElement("div");
                 fallElement.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
@@ -105,21 +131,23 @@
                 setTimeout(() => fallElement.remove(), 5000);
             }
         }
+
+        window.onload = startFloatingNoButton;
     </script>
 </head>
 <body>
-    <h1>Will you be my best friend forever?</h1>
-    <img src="https://drive.google.com/uc?export=view&id=16zlqJhC43wqx0NVVsIphSZmoEQyBmLfk" alt="Your Bestiee">
+    <h1>Will You Be My Best Friend Forever?</h1>
+    <img src="https://drive.google.com/uc?export=view&id=1c3XXt4CSOw9N2Ayujjp8trISoEyYClZP" alt="Your Girlfriend">
     <div class="btn-container">
-        <button onclick="showPopup()">Yes</button>
-        <button id="no-btn" onmouseover="moveNoButton()">No</button>
+        <button id="yes-btn" onclick="showPopup()">Yes</button>
+        <button id="no-btn">No</button>
     </div>
 
     <div id="popup-container">
-        <div id="subscription-text">Your subscription has been renewed ❤️</div>
-        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=1827UmfJjeYYiNdt2ApnWcaqLxHreEDJ4" alt="Couple Photo">
-        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=13jaIE1H1l0eFlY_wDWS0npohhFrhgg_o" alt="Couple Photo">
-        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=16zlqJhC43wqx0NVVsIphSZmoEQyBmLfk" alt="Couple Photo">
+        <div id="subscription-text">Your subscription has been renewed ❤</div>
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=1NGHcXu9l3Qyq0zTVp7ogsFBr9Cf68vZ3" alt="Couple Photo">
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=1NGHcXu9l3Qyq0zTVp7ogsFBr9Cf68vZ3" alt="Couple Photo">
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=1NGHcXu9l3Qyq0zTVp7ogsFBr9Cf68vZ3" alt="Couple Photo">
     </div>
 </body>
 </html>
