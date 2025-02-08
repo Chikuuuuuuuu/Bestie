@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Best Friend Forever?</title>
     <style>
         /* Colorful animated background */
@@ -98,7 +100,36 @@
             0% { transform: translateY(0px); opacity: 1; }
             100% { transform: translateY(100vh); opacity: 0; }
         }
+        .hidden {
+            display: none;
+        }
     </style>
+</head>
+<body>
+    <!-- First Page -->
+    <div id="page1" class="container page">
+        <h2>I need to ask you something</h2>
+        <p>Please click "Next" to proceed.</p>
+        <button id="nextButton1">Next</button>
+    </div>
+
+    <!-- Second Page (Your existing content code) -->
+    <div id="page2" class="container page hidden">
+        <h1>Will You Be My Best Friend Forever?</h1>
+        <img src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyy.gif" alt="Your bestfriend">
+        <div class="btn-container">
+            <button id="yes-btn" onclick="showPopup()">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+
+        <div id="popup-container">
+            <div id="subscription-text">Your subscription has been renewed ❤</div>
+            <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
+            <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
+            <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
+        </div>
+    </div>
+
     <script>
         function moveNoButton() {
             let button = document.getElementById("no-btn");
@@ -132,22 +163,13 @@
             }
         }
 
-        window.onload = startFloatingNoButton;
+        document.getElementById('nextButton1').addEventListener('click', function() {
+            // Hide the first page
+            document.getElementById('page1').classList.add('hidden');
+            // Show the second page
+            document.getElementById('page2').classList.remove('hidden');
+            startFloatingNoButton(); // Start the floating No button effect
+        });
     </script>
-</head>
-<body>
-    <h1>Will You Be My Best friend Forever?</h1>
-    <img src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyy.gif" alt="Your bestfriend">
-    <div class="btn-container">
-        <button id="yes-btn" onclick="showPopup()">Yes</button>
-        <button id="no-btn">No</button>
-    </div>
-
-    <div id="popup-container">
-        <div id="subscription-text">Your subscription has been renewed ❤</div>
-        <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
-        <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
-        <img class="popup-img" src="https://raw.githubusercontent.com/Chikuuuuuuuu/Bestie/refs/heads/main/yayyyy.jpg" alt="Couple Photo">
-    </div>
 </body>
 </html>
