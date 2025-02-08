@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            overflow: hidden;
+        }
+        h1 {
+            color: red;
+        }
+        img {
+            width: 250px; 
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .btn-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #no-btn {
+            position: absolute;
+        }
+        #popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .popup-img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        #subscription-text {
+            position: absolute;
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            animation: fadeInScale 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .falling {
+            position: fixed;
+            top: -50px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+    <script>
+        function moveNoButton() {
+            let button = document.getElementById("no-btn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function showPopup() {
+            document.getElementById("popup-container").style.display = "flex";
+            document.getElementById("subscription-text").style.display = "block";
+            startFallingEffects();
+        }
+
+        function startFallingEffects() {
+            let symbols = ["❤️", "🌹", "💖", "🌸", "💘"];
+            for (let i = 0; i < 30; i++) {
+                let fallElement = document.createElement("div");
+                fallElement.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                fallElement.classList.add("falling");
+                fallElement.style.left = Math.random() * 100 + "vw";
+                fallElement.style.animationDuration = Math.random() * 3 + 2 + "s";
+                fallElement.style.fontSize = Math.random() * 20 + 20 + "px";
+                document.body.appendChild(fallElement);
+                setTimeout(() => fallElement.remove(), 5000);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Will You Be My Valentine?</h1>
+    <img src="https://drive.google.com/uc?export=view&id=16zlqJhC43wqx0NVVsIphSZmoEQyBmLfk" alt="Your Girlfriend">
+    <div class="btn-container">
+        <button onclick="showPopup()">Yes</button>
+        <button id="no-btn" onmouseover="moveNoButton()">No</button>
+    </div>
+
+    <div id="popup-container">
+        <div id="subscription-text">Your subscription has been renewed ❤️</div>
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=1827UmfJjeYYiNdt2ApnWcaqLxHreEDJ4" alt="Couple Photo">
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=13jaIE1H1l0eFlY_wDWS0npohhFrhgg_o" alt="Couple Photo">
+        <img class="popup-img" src="https://drive.google.com/uc?export=view&id=16zlqJhC43wqx0NVVsIphSZmoEQyBmLfk" alt="Couple Photo">
+    </div>
+</body>
+</html>
